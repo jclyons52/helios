@@ -1,5 +1,6 @@
 import "bootstrap-material-design/dist/css/bootstrap-material-design.css";
 import * as React from "react";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 import { Redirect, Route } from "react-router-dom"
 import "./App.css";
 import { Navbar } from "./ui/Navbar";
