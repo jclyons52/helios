@@ -2,6 +2,8 @@ import { observer } from "mobx-react";
 import React, { Component } from "react";
 import { Consumer } from "../../Context";
 import { INoteStore } from "../../data";
+import { Note } from "../../data/domain/Note";
+import { List } from "../List";
 
 export const NotesList = () => (
   <Consumer>{c => <NotesListComponent noteStore={c.noteStore} />}</Consumer>
@@ -15,26 +17,11 @@ interface IProps {
 export class NotesListComponent extends Component<IProps, any> {
   public render() {
     return (
-      <div className="table-responsive">
-        <table className="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>title</th>
-              <th>body</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.noteStore.notes.map(note => (
-              <tr>
-                <td>{note.id}</td>
-                <td>{note.title}</td>
-                <td>{note.body.slice(0, 50)}...</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <List<Note>
+        headings={["id", "title", "body"]}
+        formatters={{ body: (b: string) => b.slice(0, 50) }}
+        values={this.props.noteStore.notes}
+      />
     );
   }
 }

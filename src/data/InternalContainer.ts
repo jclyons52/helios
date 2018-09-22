@@ -42,7 +42,9 @@ export class InternalContainer {
     }
 
     public get timesheetStore() {
-        return new TimesheetStore(this.timesheetApi)
+        const store = new TimesheetStore(this.timesheetApi)
+        store.load()
+        return store
     }
 
     public get timesheetFactory() {
