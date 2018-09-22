@@ -1,5 +1,7 @@
 import { IConfig } from "./Config"
 import { InternalContainer } from "./InternalContainer";
+import { INoteStore } from "./store/NoteStore";
+import { ITimesheetStore } from "./store/TimesheetStore";
 
 
 export class DataModule {
@@ -8,7 +10,11 @@ export class DataModule {
         this.internalContainer = new InternalContainer(config)
     }
 
-    public get noteStore() {
+    public get noteStore(): INoteStore {
         return this.internalContainer.noteStore
+    }
+
+    public get timesheetStore(): ITimesheetStore {
+        return this.internalContainer.timesheetStore
     }
 }
