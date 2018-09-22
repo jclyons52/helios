@@ -29,6 +29,7 @@ export class NotesListComponent extends Component<IProps, any> {
               <tr>
                 <td>{note.id}</td>
                 <td>{note.title}</td>
+                <td>{note.body.slice(0, 50)}...</td>
               </tr>
             ))}
           </tbody>
