@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import BigCalendar from "react-big-calendar";
 import { Consumer } from "../../Context";
 import { ITimesheetStore } from "../../data";
-import { TimesheetEntry } from "../../data/domain/TimesheetEntry";
+import { TimesheetEntry } from "../../data/timesheet/TimesheetEntry";
 import { TimesheetsList } from "./TimesheetList";
 
 const localizer = BigCalendar.momentLocalizer(moment);

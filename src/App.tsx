@@ -20,7 +20,6 @@ class App extends React.Component {
           <Route path="/notes" component={NotesPanel} />
           <Route path="/timesheets" component={TimesheetPanel} />
           <Redirect from="/" to={"/notes"} />
-
           </main>
         </div>
       </div>

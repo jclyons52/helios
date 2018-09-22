@@ -1,5 +1,5 @@
+import { User } from "../user/User";
 import { TimesheetEntry } from "./TimesheetEntry";
-import { User } from "./User";
 
 export class Timesheet {
   constructor(

@@ -1,6 +1,6 @@
 import faker from "faker";
-import { TimesheetEntry } from "../domain/TimesheetEntry";
-import { Factory } from "./Factory";
+import { Factory } from "../base/Factory";
+import { TimesheetEntry } from "./TimesheetEntry";
 
 export class TimesheetEntryFatory extends Factory<TimesheetEntry> {
     public create({

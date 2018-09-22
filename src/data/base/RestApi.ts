@@ -1,4 +1,4 @@
-import { IFactory } from "../factory/Factory";
+import { IFactory } from "./Factory";
 
 export interface IRestApi<T> {
     find(fields: Partial<T>): Promise<T[]>

@@ -2,8 +2,8 @@ import { observer } from "mobx-react";
 import React, { Component } from "react";
 import { Consumer } from "../../Context";
 import { ITimesheetStore } from "../../data";
-import { Timesheet } from "../../data/domain/TimeSheet";
-import { User } from "../../data/domain/User";
+import { Timesheet } from "../../data/timesheet/TimeSheet";
+import { User } from "../../data/user/User";
 import { List } from "../List";
 
 export const TimesheetsList = () => (

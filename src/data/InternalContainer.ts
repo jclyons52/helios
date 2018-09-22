@@ -1,12 +1,12 @@
-import { FakeNoteApi } from "./api/NoteApi";
-import { FakeTimesheetApi } from "./api/TimesheetApi";
 import { ApiDriver, IConfig } from "./Config";
-import { NoteFactory } from "./factory/NoteFactory";
-import { TimesheetEntryFatory } from "./factory/TimesheetEntryFactory";
-import { TimesheetFactory } from "./factory/TimesheetFactory";
-import { UserFactory } from "./factory/UserFactory";
-import { NoteStore } from "./store/NoteStore";
-import { TimesheetStore } from "./store/TimesheetStore";
+import { FakeNoteApi } from "./note/NoteApi";
+import { NoteFactory } from "./note/NoteFactory";
+import { NoteStore } from "./note/NoteStore";
+import { FakeTimesheetApi } from "./timesheet/TimesheetApi";
+import { TimesheetEntryFatory } from "./timesheet/TimesheetEntryFactory";
+import { TimesheetFactory } from "./timesheet/TimesheetFactory";
+import { TimesheetStore } from "./timesheet/TimesheetStore";
+import { UserFactory } from "./user/UserFactory";
 
 export class InternalContainer {
     constructor(private config: IConfig){}

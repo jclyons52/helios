@@ -1,7 +1,7 @@
 import { IConfig } from "./Config"
 import { InternalContainer } from "./InternalContainer";
-import { INoteStore } from "./store/NoteStore";
-import { ITimesheetStore } from "./store/TimesheetStore";
+import { INoteStore } from "./note/NoteStore";
+import { ITimesheetStore } from "./timesheet/TimesheetStore";
 
 
 export class DataModule {

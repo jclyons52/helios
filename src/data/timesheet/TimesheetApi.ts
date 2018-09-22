@@ -1,6 +1,6 @@
-import { Timesheet } from "../domain/TimeSheet";
-import { TimesheetFactory } from "../factory/TimesheetFactory";
-import { FakeRestApi, IRestApi } from "./RestApi";
+import { FakeRestApi, IRestApi } from "../base/RestApi";
+import { Timesheet } from "./TimeSheet";
+import { TimesheetFactory } from "./TimesheetFactory";
 
 export interface ITimesheetApi extends IRestApi<Timesheet> {}
 

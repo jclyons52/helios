@@ -1,6 +1,6 @@
-import { Note } from "../domain/Note";
-import { NoteFactory } from "../factory/NoteFactory";
-import { FakeRestApi, IRestApi } from "./RestApi";
+import { FakeRestApi, IRestApi } from "../base/RestApi";
+import { Note } from "./Note";
+import { NoteFactory } from "./NoteFactory";
 
 export interface INoteApi extends IRestApi<Note> {}
 

@@ -1,7 +1,7 @@
-import { Timesheet } from "../domain/TimeSheet";
-import { Factory } from "./Factory";
+import { Factory } from "../base/Factory";
+import { UserFactory } from "../user/UserFactory";
+import { Timesheet } from "./TimeSheet";
 import { TimesheetEntryFatory } from "./TimesheetEntryFactory";
-import { UserFactory } from "./UserFactory";
 
 
 export class TimesheetFactory extends Factory<Timesheet> {

@@ -2,7 +2,7 @@ import { observer } from "mobx-react";
 import React, { Component } from "react";
 import { Consumer } from "../../Context";
 import { INoteStore } from "../../data";
-import { Note } from "../../data/domain/Note";
+import { Note } from "../../data/note/Note";
 import { List } from "../List";
 
 export const NotesList = () => (

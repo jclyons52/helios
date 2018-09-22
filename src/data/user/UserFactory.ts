@@ -1,6 +1,6 @@
 import faker from "faker"
-import { User } from "../domain/User";
-import { Factory } from "./Factory";
+import { Factory } from "../base/Factory";
+import { User } from "./User";
 
 export class UserFactory extends Factory<User> {
     public create({
