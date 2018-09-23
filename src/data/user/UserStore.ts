@@ -1,6 +1,10 @@
 import { computed } from "mobx";
-import { BaseStore } from "../base/baseStore";
+import { BaseStore } from "../../framework/data/baseStore";
 import { User } from "./User";
+
+export interface IUserStore {
+    users: User[]
+}
 
 export class UserStore extends BaseStore<User> {
     @computed

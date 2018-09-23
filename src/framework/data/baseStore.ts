@@ -3,7 +3,7 @@ import { IRestApi } from "./RestApi";
 
 export class BaseStore<T> {
     @observable
-    protected entities: T[]
+    protected entities: T[] = []
 
     constructor(private api: IRestApi<T>) {}
 

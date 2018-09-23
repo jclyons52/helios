@@ -1,4 +1,4 @@
-import { Factory } from "../base/Factory";
+import { Factory } from "../../framework/data/Factory";
 import { UserFactory } from "../user/UserFactory";
 import { Timesheet } from "./TimeSheet";
 import { TimesheetEntryFatory } from "./TimesheetEntryFactory";

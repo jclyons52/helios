@@ -3,11 +3,9 @@ import * as React from "react";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { Redirect, Route } from "react-router-dom"
 import "./App.css";
-import { Navbar } from "./ui/Navbar";
-import { NotesPanel } from "./ui/notes/NotesPanel";
-import { Sidebar } from "./ui/Sidebar";
-import { TimesheetPanel } from "./ui/TimeSheets/TimesheetPanel";
-
+import { Navbar } from "./framework/ui/Navbar";
+import { Sidebar } from "./framework/ui/Sidebar";
+import { routes } from "./routes"
 
 class App extends React.Component {
   public render() {
@@ -15,10 +13,11 @@ class App extends React.Component {
       <Navbar key={1} />,
       <div key={2} className="container-fluid">
         <div className="row">
-          <Sidebar />
+          <Sidebar endpoints={routes} />
           <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-          <Route path="/notes" component={NotesPanel} />
-          <Route path="/timesheets" component={TimesheetPanel} />
+          {routes.map(endpoint => (
+          <Route path={endpoint.url()} component={endpoint.component} />
+          ))}
           <Redirect from="/" to={"/notes"} />
           </main>
         </div>

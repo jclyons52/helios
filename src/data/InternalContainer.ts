@@ -6,7 +6,9 @@ import { FakeTimesheetApi } from "./timesheet/TimesheetApi";
 import { TimesheetEntryFatory } from "./timesheet/TimesheetEntryFactory";
 import { TimesheetFactory } from "./timesheet/TimesheetFactory";
 import { TimesheetStore } from "./timesheet/TimesheetStore";
+import { FakeUserApi } from "./user/UserApi";
 import { UserFactory } from "./user/UserFactory";
+import { UserStore } from "./user/UserStore";
 
 export class InternalContainer {
     constructor(private config: IConfig){}
@@ -53,6 +55,16 @@ export class InternalContainer {
 
     public get userFactory() {
         return new UserFactory()
+    }
+
+    public get userApi() {
+        return new FakeUserApi(this.userFactory)
+    }
+
+    public get userStore() {
+        const store = new UserStore(this.userApi)
+        store.load()
+        return store
     }
 
     public get timesheetEntryFactory() {

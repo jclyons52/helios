@@ -1,6 +1,6 @@
 import { computed } from "mobx";
+import { BaseStore } from "../../framework/data/baseStore";
 import { Note } from "./Note";
-import { BaseStore } from "../base/baseStore";
 
 export interface INoteStore {
     notes: Note[]

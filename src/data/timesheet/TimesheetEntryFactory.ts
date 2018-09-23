@@ -1,5 +1,5 @@
 import faker from "faker";
-import { Factory } from "../base/Factory";
+import { Factory } from "../../framework/data/Factory";
 import { TimesheetEntry } from "./TimesheetEntry";
 
 export class TimesheetEntryFatory extends Factory<TimesheetEntry> {

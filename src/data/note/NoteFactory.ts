@@ -1,6 +1,6 @@
 import * as faker from "faker";
+import { Factory } from "../../framework/data/Factory";
 import { Note } from "./Note";
-import { Factory } from "../base/Factory";
 
 export class NoteFactory extends Factory<Note> {
   public create({

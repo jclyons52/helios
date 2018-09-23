@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Consumer } from "../../Context";
 import { INoteStore } from "../../data";
 import { Note } from "../../data/note/Note";
-import { List } from "../List";
+import { List } from "../../framework/ui/List";
 
 export const NotesList = () => (
   <Consumer>{c => <NotesListComponent noteStore={c.noteStore} />}</Consumer>

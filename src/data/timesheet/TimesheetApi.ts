@@ -1,4 +1,4 @@
-import { FakeRestApi, IRestApi } from "../base/RestApi";
+import { FakeRestApi, IRestApi } from "../../framework/data/RestApi";
 import { Timesheet } from "./TimeSheet";
 import { TimesheetFactory } from "./TimesheetFactory";
 

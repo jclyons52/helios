@@ -1,4 +1,4 @@
-import { FakeRestApi, IRestApi } from "../base/RestApi";
+import { FakeRestApi, IRestApi } from "../../framework/data/RestApi";
 import { Note } from "./Note";
 import { NoteFactory } from "./NoteFactory";
 

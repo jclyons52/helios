@@ -4,7 +4,7 @@ import { Consumer } from "../../Context";
 import { ITimesheetStore } from "../../data";
 import { Timesheet } from "../../data/timesheet/TimeSheet";
 import { User } from "../../data/user/User";
-import { List } from "../List";
+import { List } from "../../framework/ui/List";
 
 export const TimesheetsList = () => (
   <Consumer>{c => <TimesheetsListComponent Timesheetstore={c.timesheetStore} />}</Consumer>

@@ -1,5 +1,5 @@
 import { computed } from "mobx";
-import { BaseStore } from "../base/baseStore";
+import { BaseStore } from "../../framework/data/baseStore";
 import { Timesheet } from "./TimeSheet";
 import { TimesheetEntry } from "./TimesheetEntry";
 

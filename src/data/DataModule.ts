@@ -2,6 +2,7 @@ import { IConfig } from "./Config"
 import { InternalContainer } from "./InternalContainer";
 import { INoteStore } from "./note/NoteStore";
 import { ITimesheetStore } from "./timesheet/TimesheetStore";
+import { IUserStore } from "./user/UserStore";
 
 
 export class DataModule {
@@ -16,5 +17,9 @@ export class DataModule {
 
     public get timesheetStore(): ITimesheetStore {
         return this.internalContainer.timesheetStore
+    }
+
+    public get userStore(): IUserStore {
+        return this.internalContainer.userStore
     }
 }
