@@ -7,6 +7,7 @@ export class Endpoint {
     public url: Url,
     public label: string,
     public component: ComponentType,
+    public exact: boolean = false,
     public showInSidebar: boolean = true
   ) {}
 }
