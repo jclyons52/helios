@@ -19,7 +19,7 @@ export class NotesListComponent extends Component<IProps, any> {
     return (
       <List<Note>
         headings={["id", "title", "body"]}
-        formatters={{ body: (b: string) => b.slice(0, 50) }}
+        formatters={{ body: (b: string) => b.slice(0, 500) }}
         values={this.props.noteStore.notes}
       />
     );

@@ -2,6 +2,7 @@
 export enum FieldType {
     num = 'Number',
     str = "String",
+    text = "Text",
     bool = "Boolean"
 }
 

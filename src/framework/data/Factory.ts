@@ -1,5 +1,5 @@
-import * as faker from "faker"
-import { metadata } from "../decorators"
+import * as faker from "faker";
+import { metadata } from "../decorators";
 import { Field, FieldType } from "./FieldType";
 
 export interface IFactory<T> {
@@ -8,7 +8,7 @@ export interface IFactory<T> {
 }
 
 // tslint:disable-next-line:ban-types
-type Abstract<T> = Function & {prototype: T};
+type Abstract<T> = Function & { prototype: T };
 type Constructor<T> = new () => T;
 type Class<T> = Abstract<T> | Constructor<T>;
 
@@ -24,34 +24,36 @@ export abstract class Factory<T> implements IFactory<T> {
 
 // tslint:disable-next-line:max-classes-per-file
 export class BaseFactory<T extends {}> extends Factory<T> {
-
-  private fields: Array<Field<T>> = []
+  private fields: Array<Field<T>> = [];
 
   constructor(private classRef: Class<T>) {
-    super()
-    const props: Partial<T> = metadata[classRef.name]
-    Object.keys(props).map((key) => {
+    super();
+    const props: Partial<T> = metadata[classRef.name];
+    Object.keys(props).map(key => {
       // @ts-ignore
-      const field = new Field<T>(key, props[key])
-      this.fields.push(field)
-    })
+      const field = new Field<T>(key, props[key]);
+      this.fields.push(field);
+    });
   }
 
   public create(params: Partial<T>): T {
     // @ts-ignore
     const entity = new this.classRef();
     this.fields.map(field => {
-      switch(field.type) {
-        case FieldType.str: 
-          entity[field.fieldName] = faker.lorem.sentence()
+      switch (field.type) {
+        case FieldType.str:
+          entity[field.fieldName] = faker.lorem.sentence();
           break;
-        case FieldType.num: 
-          entity[field.fieldName] = faker.random.number()
+        case FieldType.text:
+          entity[field.fieldName] = faker.lorem.paragraph(3);
+          break;
+        case FieldType.num:
+          entity[field.fieldName] = faker.random.number();
           break;
         case FieldType.bool:
-          entity[field.fieldName] = faker.random.boolean()
+          entity[field.fieldName] = faker.random.boolean();
       }
-    })
-    return entity
+    });
+    return entity;
   }
 }
