@@ -7,7 +7,7 @@ export interface IRestApi<T> {
     delete(entity: T): Promise<boolean>
 }
 
-interface IHasId {
+export interface IHasId {
     id: number
 }
 
