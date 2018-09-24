@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+// import { Note } from "../../data/note/Note";
 
 export class NoteEdit extends Component<any, any> {
   public render() {
+    this.getFields()
     return (
       <div className="row">
         <div className="col-md-8 order-md-1">
@@ -20,5 +22,13 @@ export class NoteEdit extends Component<any, any> {
         </div>
       </div>
     );
+  }
+
+  private getFields() {
+    // const keys = Reflect.getMetadataKeys(Note)
+    // keys.map(key => {
+    //   // const t = Reflect.getMetadata(key, Note)
+    //   // const name = t.name
+    // })
   }
 }

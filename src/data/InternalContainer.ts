@@ -1,6 +1,7 @@
+import { BaseFactory } from "../framework/data/Factory";
 import { ApiDriver, IConfig } from "./Config";
+import { Note } from "./note/Note";
 import { FakeNoteApi } from "./note/NoteApi";
-import { NoteFactory } from "./note/NoteFactory";
 import { NoteStore } from "./note/NoteStore";
 import { FakeTimesheetApi } from "./timesheet/TimesheetApi";
 import { TimesheetEntryFatory } from "./timesheet/TimesheetEntryFactory";
@@ -24,7 +25,7 @@ export class InternalContainer {
     }
 
     public get noteFactory() {
-        return new NoteFactory()
+        return new BaseFactory<Note>(Note)
     }
 
     public get noteStore() {
