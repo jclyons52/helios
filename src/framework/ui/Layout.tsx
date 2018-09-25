@@ -1,4 +1,3 @@
-import { observer } from "mobx-react";
 import React, { Component } from "react"
 import { Redirect, Route } from "react-router";
 import { Consumer } from "../../Context";
@@ -12,7 +11,6 @@ interface IProps {
     endpoints: Endpoint[]
 }
 
-@observer
 export class LayoutComponent extends Component<IProps, any>{
     public render() {
         const { endpoints } = this.props
@@ -29,7 +27,7 @@ export class LayoutComponent extends Component<IProps, any>{
                       exact={endpoint.exact}
                     />
                   ))}
-                  <Redirect from="/" to={"/notes"} />
+                  <Redirect from="/" to={"/note"} />
                 </main>
               </div>
             </div>

@@ -1,12 +1,11 @@
 import React, { Component } from "react";
+import { Formatter } from "../../types";
 
 interface IProps<T extends { [key: string]: any }> {
   headings: Array<keyof T>;
   values: T[];
-  formatters: { [name: string]: (val: any) => string }
+  formatters: { [name: string]: Formatter }
 }
-
-type Formatter = (val: any) => string
 
 export class List<T> extends Component<IProps<T>, any> {
   public render() {

@@ -13,7 +13,7 @@ export class Sidebar extends Component<ISidebarProps, any> {
         <div className="sidebar-sticky">
           <ul className="nav flex-column">
             {this.props.endpoints.filter(e => e.showInSidebar).map(endpoint => (
-              <li className="nav-item">
+              <li key={endpoint.url()} className="nav-item">
                 <NavLink to={endpoint.url()} className="nav-link active">
                   {endpoint.label}
                 </NavLink>

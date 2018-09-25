@@ -1,6 +1,7 @@
-import { FieldType } from "../../framework/data/FieldType";
-import { field } from "../../framework/decorators";
+import { FieldType } from "../data/FieldType";
+import { field, Form } from "../decorators";
 
+@Form()
 export class User {
   @field<User>()
   public id: number;

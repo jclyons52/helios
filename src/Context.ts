@@ -1,10 +1,10 @@
 import * as React from "react"
-import { ApiDriver, Config, DataModule } from "./data";
+import { Kernel } from "./framework/Kernel";
 
-const dataModule = new DataModule(new Config(ApiDriver.Fake))
+const kernel = new Kernel()
+kernel.boot()
 const { Consumer } = React.createContext({
-    endpoints: dataModule.endpoints,
-    timesheetStore: dataModule.timesheetStore,
+    endpoints: kernel.endpoints
 })
 
 export { Consumer }
