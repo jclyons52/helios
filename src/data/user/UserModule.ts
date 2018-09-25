@@ -1,9 +1,9 @@
 import { BaseModule } from "../../framework/data/Module";
 import { IConfig } from "../Config";
-import { Note } from "./Note";
+import { User } from "./User";
 
-export class NoteModule extends BaseModule<Note> {
+export class UserModule extends BaseModule<User> {
     constructor(config: IConfig) {
-        super(config, Note)
+        super(config, User)
     }
 }

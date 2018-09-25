@@ -1,17 +1,11 @@
 import { FieldType } from "../../framework/data/FieldType";
-import { logType } from "../../framework/decorators";
+import { field } from "../../framework/decorators";
 
 export class Note {
-  @logType()
+  @field<Note>()
   public id: number;
-  @logType()
+  @field<Note>()
   public title: string;
-  @logType(FieldType.text)
+  @field<Note>(FieldType.text)
   public body: string;
-
-  constructor(id: number, title: string, body: string) {
-    this.id = id;
-    this.title = title;
-    this.body = body;
-  }
 }

@@ -1,9 +1,13 @@
-
+import { FieldType } from "../../framework/data/FieldType";
+import { field } from "../../framework/decorators";
 
 export class User {
-    constructor(
-        public id: number,
-        public username: string,
-        public email: string
-    ){}
+  @field<User>()
+  public id: number;
+
+  @field<User>(FieldType.userName)
+  public username: string;
+
+  @field<User>(FieldType.email)
+  public email: string;
 }

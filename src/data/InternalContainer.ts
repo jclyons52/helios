@@ -1,37 +1,28 @@
-import { BaseFactory } from "../framework/data/Factory";
 import { ApiDriver, IConfig } from "./Config";
-import { Note } from "./note/Note";
-import { FakeNoteApi } from "./note/NoteApi";
-import { NoteStore } from "./note/NoteStore";
+import { NoteModule } from "./note/NoteModule";
 import { FakeTimesheetApi } from "./timesheet/TimesheetApi";
 import { TimesheetEntryFatory } from "./timesheet/TimesheetEntryFactory";
 import { TimesheetFactory } from "./timesheet/TimesheetFactory";
 import { TimesheetStore } from "./timesheet/TimesheetStore";
-import { FakeUserApi } from "./user/UserApi";
-import { UserFactory } from "./user/UserFactory";
-import { UserStore } from "./user/UserStore";
+import { UserModule } from "./user/UserModule";
 
 export class InternalContainer {
-    constructor(private config: IConfig){}
+    public noteModule: NoteModule;
+    public userModule: UserModule;
+    constructor(private config: IConfig){
+        this.noteModule = new NoteModule(config)
+        this.userModule = new UserModule(config)
+    }
 
     /**
      * START Notes
      */
     public get noteApi() {
-        switch(this.config.apiDriver) {
-            case ApiDriver.Fake: return new FakeNoteApi(this.noteFactory)
-            default: return new FakeNoteApi(this.noteFactory)
-        }
+        return this.noteModule.api
     }
 
     public get noteFactory() {
-        return new BaseFactory<Note>(Note)
-    }
-
-    public get noteStore() {
-        const store = new NoteStore(this.noteApi)
-        store.load()
-        return store
+        return this.noteModule.factory
     }
 
     /**
@@ -51,21 +42,7 @@ export class InternalContainer {
     }
 
     public get timesheetFactory() {
-        return new TimesheetFactory(this.userFactory, this.timesheetEntryFactory)
-    }
-
-    public get userFactory() {
-        return new UserFactory()
-    }
-
-    public get userApi() {
-        return new FakeUserApi(this.userFactory)
-    }
-
-    public get userStore() {
-        const store = new UserStore(this.userApi)
-        store.load()
-        return store
+        return new TimesheetFactory(this.userModule.factory, this.timesheetEntryFactory)
     }
 
     public get timesheetEntryFactory() {

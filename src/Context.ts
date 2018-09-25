@@ -3,9 +3,8 @@ import { ApiDriver, Config, DataModule } from "./data";
 
 const dataModule = new DataModule(new Config(ApiDriver.Fake))
 const { Consumer } = React.createContext({
-    noteStore: dataModule.noteStore,
+    endpoints: dataModule.endpoints,
     timesheetStore: dataModule.timesheetStore,
-    userStore: dataModule.userStore
 })
 
 export { Consumer }

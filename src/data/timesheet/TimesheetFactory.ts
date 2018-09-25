@@ -1,5 +1,5 @@
-import { Factory } from "../../framework/data/Factory";
-import { UserFactory } from "../user/UserFactory";
+import { Factory, IFactory } from "../../framework/data/Factory";
+import { User } from "../user/User";
 import { Timesheet } from "./TimeSheet";
 import { TimesheetEntryFatory } from "./TimesheetEntryFactory";
 
@@ -7,7 +7,7 @@ import { TimesheetEntryFatory } from "./TimesheetEntryFactory";
 export class TimesheetFactory extends Factory<Timesheet> {
 
     constructor(
-        private userFactory: UserFactory, 
+        private userFactory: IFactory<User>, 
         private timesheetEntryFactory: TimesheetEntryFatory
         ){
             super()
