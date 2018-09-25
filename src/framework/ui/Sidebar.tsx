@@ -1,3 +1,4 @@
+import { observer } from "mobx-react";
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Endpoint } from "../Endpoint";
@@ -6,6 +7,7 @@ export interface ISidebarProps {
   endpoints: Endpoint[]
 }
 
+@observer
 export class Sidebar extends Component<ISidebarProps, any> {
   public render() {
     return (

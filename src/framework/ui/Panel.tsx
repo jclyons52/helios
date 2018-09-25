@@ -1,5 +1,7 @@
+import { observer } from "mobx-react";
 import React, { Component } from "react";
 import { BaseStore } from "../data/baseStore";
+import { IHasId } from "../data/RestApi";
 import { List } from "./List";
 
 
@@ -10,7 +12,8 @@ interface IProps<T> {
   name: string
 }
 
-export class Panel<T> extends Component<IProps<T>, any> {
+@observer
+export class Panel<T extends IHasId> extends Component<IProps<T>, any> {
   public render() {
     return (
       <span>
@@ -21,8 +24,11 @@ export class Panel<T> extends Component<IProps<T>, any> {
         headings={this.props.headings}
         formatters={this.props.formatters}
         values={this.props.store.entities}
+        editRoute={this.editRoute}
       />
       </span>
     );
   }
+
+  private editRoute = (id: number) => `${this.props.name.toLowerCase()}/edit/${id}`
 }

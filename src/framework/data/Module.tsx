@@ -61,7 +61,7 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
   protected getEndpoints() {
     return [
     new Endpoint(() => `/${this.name.toLowerCase()}`, this.name, this.listView, true),
-    new Endpoint(() => `/${this.name.toLowerCase()}/edit`, `Edit ${this.name}`, this.editView, false, false),
+    new Endpoint(() => `/${this.name.toLowerCase()}/edit/:id`, `Edit ${this.name}`, this.editView, false, false),
 
     ]
   }

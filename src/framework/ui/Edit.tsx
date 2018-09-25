@@ -1,3 +1,4 @@
+import { observer } from "mobx-react";
 import React, { Component } from "react";
 import { Field } from "../data/FieldType";
 
@@ -6,6 +7,7 @@ interface IProps<T> {
   fields: Array<Field<T>>;
 }
 
+@observer
 export class Edit<T> extends Component<IProps<T>, any> {
   public render() {
     this.getFields();

@@ -1,5 +1,7 @@
+import { observer } from "mobx-react";
 import React, { Component } from "react";
 
+@observer
 export class Navbar extends Component<any, any> {
   public render() {
     return (
