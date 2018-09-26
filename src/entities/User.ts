@@ -11,4 +11,8 @@ export class User {
 
   @field(FieldType.email)
   public email: string;
+
+  public toString() {
+    return this.username
+  }
 }
