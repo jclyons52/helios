@@ -1,5 +1,5 @@
 import * as faker from "faker";
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { Class, Formatter, IFormatterMap } from "../../types";
 import { modules } from "../decorators";
 import { IModule } from "./Module";
@@ -12,6 +12,15 @@ export enum FieldType {
   userName = "username",
   email = "email",
   entity = "Entity"
+}
+
+  /**
+   * 
+   * @todo fix any type
+   */
+interface IFieldProps {
+  value: any
+  onChange: (value: any) => void
 }
 
 export abstract class Field<T> {
@@ -40,10 +49,16 @@ export abstract class Field<T> {
 
   public abstract fake(): any;
 
-  public abstract render(): any;
+  public abstract render(props: IFieldProps): any;
 
   public listFormatter(obj: IFormatterMap): IFormatterMap {
     return obj;
+  }
+
+  protected onChange(func: (val: any) => void) {
+    return (event: ChangeEvent<HTMLInputElement>) => {
+      func(event.currentTarget.value)
+    }
   }
 }
 
@@ -53,13 +68,14 @@ export class NumberField<T> extends Field<T> {
     return faker.random.number();
   }
 
-  public render() {
+  public render(props: IFieldProps) {
     return (
       <div className="form-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
         <input
           type="text"
-          value={this.fake()}
+          value={props.value}
+          onChange={this.onChange(props.onChange)}
           id={this.fieldName}
           className="form-control"
         />
@@ -73,13 +89,14 @@ export class StringField<T> extends Field<T> {
   public fake() {
     return faker.lorem.sentence();
   }
-  public render() {
+  public render(props: IFieldProps) {
     return (
       <div className="form-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
         <input
           type="text"
-          value={this.fake()}
+          value={props.value}
+          onChange={this.onChange(props.onChange)}
           id={this.fieldName}
           className="form-control"
         />
@@ -93,13 +110,14 @@ export class UsernameField<T> extends Field<T> {
   public fake() {
     return faker.internet.userName();
   }
-  public render() {
+  public render(props: IFieldProps) {
     return (
       <div className="form-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
         <input
           type="text"
-          value={this.fake()}
+          value={props.value}
+          onChange={this.onChange(props.onChange)}
           id={this.fieldName}
           className="form-control"
         />
@@ -113,13 +131,14 @@ export class EmailField<T> extends Field<T> {
   public fake() {
     return faker.internet.email();
   }
-  public render() {
+  public render(props: IFieldProps) {
     return (
       <div className="form-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
         <input
           type="text"
-          value={this.fake()}
+          value={props.value}
+          onChange={this.onChange(props.onChange)}
           id={this.fieldName}
           className="form-control"
         />
@@ -133,13 +152,14 @@ export class TextField<T> extends Field<T> {
   public fake() {
     return faker.lorem.paragraph(3);
   }
-  public render() {
+  public render(props: IFieldProps) {
     return (
       <div className="form-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
         <input
           type="text"
-          value={this.fake()}
+          value={props.value}
+          onChange={this.onChange(props.onChange)}
           id={this.fieldName}
           className="form-control"
         />
@@ -153,13 +173,13 @@ export class BoolField<T> extends Field<T> {
   public fake() {
     return faker.random.boolean();
   }
-  public render() {
+  public render(props: IFieldProps) {
     return (
       <div className="form-check">
         <input
           type="checkbox"
           className="form-check-input"
-          checked={this.fake()}
+          checked={props.value}
           id={this.fieldName}
         />
         <label className="form-check-label" htmlFor={this.fieldName}>
@@ -195,13 +215,14 @@ export class ManyToOne<T, V> extends Field<T> {
     }
     return null;
   }
-  public render() {
+  public render(props: IFieldProps) {
     return (
       <div className="form-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
         <input
           type="text"
-          value={this.fake()}
+          value={props.value}
+          onChange={this.onChange(props.onChange)}
           id={this.fieldName}
           className="form-control"
         />
@@ -231,7 +252,7 @@ export class OneToMany<T, V> extends Field<T> {
     }
     return null;
   }
-  public render() {
+  public render(props: IFieldProps) {
     throw new Error("Method not implemented.");
   }
 }

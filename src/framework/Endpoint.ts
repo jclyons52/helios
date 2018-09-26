@@ -7,7 +7,7 @@ export class Endpoint {
   constructor(
     public url: Url,
     public label: string,
-    public component: ComponentType<RouteComponentProps>,
+    public component: ComponentType<RouteComponentProps<any>>,
     public exact: boolean = false,
     public showInSidebar: boolean = true
   ) {}

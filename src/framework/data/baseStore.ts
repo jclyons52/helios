@@ -11,12 +11,12 @@ export class BaseStore<T extends IHasId> {
         this.entities = await this.api.find({})
     }
 
+    public find(id: number) {
+        return this.entities.find(e => e.id === id)
+    }
+
     @action
-    public onChange = <K extends keyof T>(id: number, field: K) => (value: T[K]) => {
-        const entity = this.entities.find(e => e.id === id)
-        if (!entity) {
-            return
-        }
+    public onChange = <K extends keyof T & string>(entity: T, field: K ) => (value: T[K]) => {
         entity[field] = value
     }
 }

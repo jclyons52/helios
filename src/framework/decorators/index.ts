@@ -1,4 +1,4 @@
-import { Class, Formatter } from "../../types";
+import { Class, Formatter, ModuleParams } from "../../types";
 import { Field, FieldType, ManyToOne, OneToMany } from "../data/FieldType";
 import { BaseModule, IModule } from "../data/Module";
 import { IHasId } from "../data/RestApi";
@@ -45,7 +45,7 @@ export function oneToMany<T, V>(classRef: Class<V>) {
   };
 }
 
-export function Form<T extends IHasId>(config: Partial<IModule<T>> = {}) {
+export function Resource<T extends IHasId>(config: ModuleParams<T>) {
   return (target: Class<T>) => {
     const m = new BaseModule<T>(target, config);
     modules.push(m);

@@ -1,7 +1,7 @@
 import { Container } from "inversify";
 import React from "react";
 import { RouteComponentProps } from "react-router";
-import { Class, IFormatterMap } from "../../types";
+import { Class, IFormatterMap, ModuleParams } from "../../types";
 import { metadata } from "../decorators";
 import { Endpoint } from "../Endpoint";
 import { Edit } from "../ui/Edit";
@@ -13,6 +13,7 @@ import { FakeRestApi, IHasId, IRestApi } from "./RestApi";
 
 export interface IModule<T extends IHasId> {
   name: string;
+  baseUrl: string;
   store: BaseStore<T>;
   api: IRestApi<T>;
   factory: IFactory<T>;
@@ -24,6 +25,7 @@ export interface IModule<T extends IHasId> {
 }
 
 export class BaseModule<T extends IHasId> implements IModule<T> {
+  public baseUrl: string;
   public listFormatters: IFormatterMap = {};
 
   public name: string;
@@ -32,7 +34,8 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
   public factory: IFactory<T>;
   public endpoints: Endpoint[] = [];
   public fields: Array<Field<T>>;
-  constructor(classRef: Class<T>, c: Partial<IModule<T>>) {
+  constructor(classRef: Class<T>, c: ModuleParams<T>) {
+    this.baseUrl = c.baseUrl;
     this.name = c.name || classRef.name;
     this.fields = c.fields || metadata[this.name];
     this.factory = c.factory || new BaseFactory<T>(classRef, this.fields);
@@ -72,6 +75,7 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
       new Endpoint(
         () => `/${this.name.toLowerCase()}/edit/:id`,
         `Edit ${this.name}`,
+        // @ts-ignore
         this.editView,
         false,
         false
@@ -79,8 +83,21 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
     ];
   }
 
-  protected editView = () => {
-    return <Edit<T> entity={this.store.entities[0]} fields={this.fields} />;
+  protected editView = (props: RouteComponentProps<any>) => {
+    const id = props.match.params.id
+    const eId = id ? Number(id) : 0
+    const entity = this.store.find(eId)
+    if(!entity) {
+      props.history.push("/")
+      return
+    }
+    return (
+      <Edit<T>
+        entity={entity}
+        fields={this.fields}
+        store={this.store}
+      />
+    );
   };
 
   protected listView = (props: RouteComponentProps) => {

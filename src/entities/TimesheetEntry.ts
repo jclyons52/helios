@@ -1,6 +1,6 @@
-import { field, Form } from "../framework/decorators";
+import { field, Resource } from "../framework/decorators";
 
-@Form()
+@Resource({ baseUrl: "/timesheetentries" })
 export class TimesheetEntry {
   @field()
   public id: number

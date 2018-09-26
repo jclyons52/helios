@@ -1,8 +1,8 @@
-import { field, Form, manyToOne, oneToMany } from "../framework/decorators";
+import { field, manyToOne, oneToMany, Resource } from "../framework/decorators";
 import { TimesheetEntry } from "./TimesheetEntry";
 import { User } from "./User";
 
-@Form()
+@Resource({ baseUrl: "/timesheets" })
 export class Timesheet {
   @field()
     public id: number

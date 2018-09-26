@@ -1,7 +1,7 @@
 import { FieldType } from "../framework/data/FieldType";
-import { field, Form } from "../framework/decorators";
+import { field, Resource } from "../framework/decorators";
 
-@Form()
+@Resource({ baseUrl: "/users" })
 export class User {
   @field()
   public id: number;
