@@ -6,7 +6,7 @@ import { IHasId } from "../data/RestApi";
 import { List } from "./List";
 
 
-interface IProps<T> extends RouteComponentProps {
+interface IProps<T extends IHasId> extends RouteComponentProps {
   store: BaseStore<T>
   headings: Array<keyof T>
   formatters: { [name: string]: (val: any) => string }

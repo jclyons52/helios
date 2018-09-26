@@ -1,10 +1,10 @@
-import { field, Form, manyToOne, oneToMany } from "../decorators";
+import { field, Form, manyToOne, oneToMany } from "../framework/decorators";
 import { TimesheetEntry } from "./TimesheetEntry";
 import { User } from "./User";
 
 @Form()
 export class Timesheet {
-  @field<Timesheet>()
+  @field()
     public id: number
 
     @manyToOne<Timesheet, User>(User)

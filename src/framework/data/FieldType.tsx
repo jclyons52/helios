@@ -55,7 +55,7 @@ export class NumberField<T> extends Field<T> {
 
   public render() {
     return (
-      <div className="input-group">
+      <div className="form-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
         <input
           type="text"
@@ -75,7 +75,7 @@ export class StringField<T> extends Field<T> {
   }
   public render() {
     return (
-      <div className="input-group">
+      <div className="form-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
         <input
           type="text"
@@ -95,7 +95,7 @@ export class UsernameField<T> extends Field<T> {
   }
   public render() {
     return (
-      <div className="input-group">
+      <div className="form-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
         <input
           type="text"
@@ -115,7 +115,7 @@ export class EmailField<T> extends Field<T> {
   }
   public render() {
     return (
-      <div className="input-group">
+      <div className="form-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
         <input
           type="text"
@@ -135,7 +135,7 @@ export class TextField<T> extends Field<T> {
   }
   public render() {
     return (
-      <div className="input-group">
+      <div className="form-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
         <input
           type="text"
@@ -197,7 +197,7 @@ export class ManyToOne<T, V> extends Field<T> {
   }
   public render() {
     return (
-      <div className="input-group">
+      <div className="form-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
         <input
           type="text"

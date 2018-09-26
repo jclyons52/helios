@@ -1,8 +1,8 @@
 import { Container } from "inversify";
+import * as entities from "../entities"
 import { IModule } from "./data/Module";
 import { modules } from "./decorators"
 import { Endpoint } from "./Endpoint";
-import * as entities from "./entities"
 export class Kernel {
 
     private container = new Container()

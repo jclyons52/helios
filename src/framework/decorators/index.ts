@@ -7,9 +7,8 @@ export const metadata = {};
 
 export const modules: Array<IModule<any>> = []
 
-export function field<T>(fieldType?: FieldType) {
-  // tslint:disable-next-line:ban-types
-  return (target: any, key: keyof T & string) => {
+export function field(fieldType?: FieldType) {
+  return <T>(target: T, key: keyof T & string) => {
     const t = Reflect.getMetadata("design:type", target, key);
     const name = target.constructor.prototype.constructor.name;
     if (!metadata[name]) {
