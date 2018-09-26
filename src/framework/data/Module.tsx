@@ -1,5 +1,6 @@
 import { Container } from "inversify";
 import React from "react"
+import { RouteComponentProps } from "react-router";
 import { Class, IFormatterMap } from "../../types";
 import { metadata } from "../decorators";
 import { Endpoint } from "../Endpoint";
@@ -75,13 +76,14 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
     )
   }
 
-  protected listView = () => {
+  protected listView = (props: RouteComponentProps) => {
     return (
       <Panel<T> 
       headings={this.fields.map(f => f.fieldName)} 
       formatters={this.listFormatters}
       name={this.name}
       store={this.store}
+      {...props}
       />
     )
   }

@@ -57,7 +57,12 @@ export class NumberField<T> extends Field<T> {
     return (
       <div className="input-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
-        <input type="text" id={this.fieldName} className="form-control" />
+        <input
+          type="text"
+          value={this.fake()}
+          id={this.fieldName}
+          className="form-control"
+        />
       </div>
     );
   }
@@ -72,7 +77,12 @@ export class StringField<T> extends Field<T> {
     return (
       <div className="input-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
-        <input type="text" id={this.fieldName} className="form-control" />
+        <input
+          type="text"
+          value={this.fake()}
+          id={this.fieldName}
+          className="form-control"
+        />
       </div>
     );
   }
@@ -87,7 +97,12 @@ export class UsernameField<T> extends Field<T> {
     return (
       <div className="input-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
-        <input type="text" id={this.fieldName} className="form-control" />
+        <input
+          type="text"
+          value={this.fake()}
+          id={this.fieldName}
+          className="form-control"
+        />
       </div>
     );
   }
@@ -102,7 +117,12 @@ export class EmailField<T> extends Field<T> {
     return (
       <div className="input-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
-        <input type="text" id={this.fieldName} className="form-control" />
+        <input
+          type="text"
+          value={this.fake()}
+          id={this.fieldName}
+          className="form-control"
+        />
       </div>
     );
   }
@@ -117,7 +137,12 @@ export class TextField<T> extends Field<T> {
     return (
       <div className="input-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
-        <input type="text" id={this.fieldName} className="form-control" />
+        <input
+          type="text"
+          value={this.fake()}
+          id={this.fieldName}
+          className="form-control"
+        />
       </div>
     );
   }
@@ -126,13 +151,20 @@ export class TextField<T> extends Field<T> {
 // tslint:disable-next-line:max-classes-per-file
 export class BoolField<T> extends Field<T> {
   public fake() {
-    faker.random.boolean();
+    return faker.random.boolean();
   }
   public render() {
     return (
-      <div className="input-group">
-        <label htmlFor={this.fieldName}>{this.fieldName}</label>
-        <input type="text" id={this.fieldName} className="form-control" />
+      <div className="form-check">
+        <input
+          type="checkbox"
+          className="form-check-input"
+          checked={this.fake()}
+          id={this.fieldName}
+        />
+        <label className="form-check-label" htmlFor={this.fieldName}>
+          {this.fieldName}
+        </label>
       </div>
     );
   }
@@ -167,7 +199,12 @@ export class ManyToOne<T, V> extends Field<T> {
     return (
       <div className="input-group">
         <label htmlFor={this.fieldName}>{this.fieldName}</label>
-        <input type="text" id={this.fieldName} className="form-control" />
+        <input
+          type="text"
+          value={this.fake()}
+          id={this.fieldName}
+          className="form-control"
+        />
       </div>
     );
   }

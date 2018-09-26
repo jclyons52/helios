@@ -1,11 +1,12 @@
 import { observer } from "mobx-react";
 import React, { Component } from "react";
+import { RouteComponentProps } from "react-router-dom";
 import { BaseStore } from "../data/baseStore";
 import { IHasId } from "../data/RestApi";
 import { List } from "./List";
 
 
-interface IProps<T> {
+interface IProps<T> extends RouteComponentProps {
   store: BaseStore<T>
   headings: Array<keyof T>
   formatters: { [name: string]: (val: any) => string }
@@ -25,6 +26,7 @@ export class Panel<T extends IHasId> extends Component<IProps<T>, any> {
         formatters={this.props.formatters}
         values={this.props.store.entities}
         editRoute={this.editRoute}
+        history={this.props.history}
       />
       </span>
     );
