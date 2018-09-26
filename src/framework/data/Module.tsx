@@ -1,4 +1,5 @@
 import { Container } from "inversify";
+import { decorate, observable } from "mobx";
 import React from "react";
 import { RouteComponentProps } from "react-router";
 import { Class, IFormatterMap, ModuleParams } from "../../types";
@@ -38,6 +39,7 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
     this.baseUrl = c.baseUrl;
     this.name = c.name || classRef.name;
     this.fields = c.fields || metadata[this.name];
+    this.makeObservable(classRef)
     this.factory = c.factory || new BaseFactory<T>(classRef, this.fields);
     this.api = c.api || this.apiFactory();
     this.store =
@@ -111,4 +113,14 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
       />
     );
   };
+
+  private makeObservable = (ref: Class<T>) => {
+    // @ts-ignore
+    const obj = this.fields.reduce((carry, item) => {
+    // @ts-ignore
+      carry[item.fieldName] = observable
+      return carry
+    }, {})
+    decorate(ref, obj)
+  }
 }

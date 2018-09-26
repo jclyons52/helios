@@ -18,8 +18,8 @@ export function field(fieldType?: FieldType) {
   };
 }
 
-export function manyToOne<T, V>(classRef: Class<V>, formatter: Formatter = (obj: Object) => obj.toString()) {
-  return (target: any, key: keyof T & string) => {
+export function manyToOne<V>(classRef: Class<V>, formatter: Formatter = (obj: Object) => obj.toString()) {
+  return <T>(target: any, key: keyof T & string) => {
     const t = Reflect.getMetadata("design:type", target, key);
     // tslint:disable-next-line:no-console
     console.log(t)
@@ -32,8 +32,8 @@ export function manyToOne<T, V>(classRef: Class<V>, formatter: Formatter = (obj:
 }
 
 
-export function oneToMany<T, V>(classRef: Class<V>) {
-  return (target: any, key: keyof T & string) => {
+export function oneToMany<V>(classRef: Class<V>) {
+  return <T>(target: any, key: keyof T & string) => {
     const t = Reflect.getMetadata("design:type", target, key);
     // tslint:disable-next-line:no-console
     console.log(t)
