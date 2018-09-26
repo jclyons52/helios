@@ -2,7 +2,7 @@ import { Container } from "inversify";
 import { decorate, observable } from "mobx";
 import React from "react";
 import { RouteComponentProps } from "react-router";
-import { Class, IFormatterMap, ModuleParams } from "../../types";
+import { Class, ModuleParams } from "../../types";
 import { metadata } from "../decorators";
 import { Endpoint } from "../Endpoint";
 import { Edit } from "../ui/Edit";
@@ -20,14 +20,13 @@ export interface IModule<T extends IHasId> {
   factory: IFactory<T>;
   endpoints: Endpoint[];
   fields: Array<Field<T>>;
-  listFormatters: IFormatterMap;
   register(c: Container): void;
   boot(c: Container): void;
+  editRoute(id?: string): string
 }
 
 export class BaseModule<T extends IHasId> implements IModule<T> {
   public baseUrl: string;
-  public listFormatters: IFormatterMap = {};
 
   public name: string;
   public api: IRestApi<T>;
@@ -49,7 +48,6 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
         store.load();
         return store;
       })();
-    this.fields.map(f => f.listFormatter(this.listFormatters));
     this.endpoints = this.getEndpoints();
   }
 
@@ -61,6 +59,8 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
     // tslint:disable-next-line:no-console
     console.log(c);
   }
+
+  public editRoute = (id: string = ":id") => `/${this.name.toLowerCase()}/edit/${id}`
 
   protected apiFactory(): FakeRestApi<T> {
     return new FakeRestApi<T>(this.factory);
@@ -75,7 +75,7 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
         true
       ),
       new Endpoint(
-        () => `/${this.name.toLowerCase()}/edit/:id`,
+        this.editRoute,
         `Edit ${this.name}`,
         // @ts-ignore
         this.editView,
@@ -105,8 +105,7 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
   protected listView = (props: RouteComponentProps) => {
     return (
       <Panel<T>
-        headings={this.fields.map(f => f.fieldName)}
-        formatters={this.listFormatters}
+        fields={this.fields}
         name={this.name}
         store={this.store}
         {...props}

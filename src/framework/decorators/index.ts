@@ -18,7 +18,7 @@ export function field(fieldType?: FieldType) {
   };
 }
 
-export function manyToOne<V>(classRef: Class<V>, formatter: Formatter = (obj: Object) => obj.toString()) {
+export function manyToOne<V extends IHasId>(classRef: Class<V>, formatter: Formatter = (obj: Object) => obj.toString()) {
   return <T>(target: any, key: keyof T & string) => {
     const t = Reflect.getMetadata("design:type", target, key);
     // tslint:disable-next-line:no-console

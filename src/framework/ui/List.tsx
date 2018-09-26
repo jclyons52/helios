@@ -1,13 +1,12 @@
 import * as H from "history"
 import { observer } from "mobx-react";
 import React, { Component } from "react";
-import { Formatter } from "../../types";
+import { Field } from "../data/FieldType";
 import { IHasId } from "../data/RestApi";
 
 interface IProps<T extends { id: number; [key: string]: any }> {
-  headings: Array<keyof T>;
+  fields: Array<Field<T>>;
   values: T[];
-  formatters: { [name: string]: Formatter };
   editRoute: (id: number) => string;
   history: H.History
 }
@@ -20,16 +19,18 @@ export class List<T extends IHasId> extends Component<IProps<T>, any> {
         <table className="table table-striped table-sm">
           <thead>
             <tr>
-              {this.props.headings.map((h, i) => (
-                <th key={i}>{h}</th>
+              {this.props.fields.map((field, i) => (
+                <th key={i}>{field.fieldName}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {this.props.values.map(v => (
               <tr onClick={this.linkToEdit(v.id)}>
-                {this.props.headings.map((h, i) => (
-                  <td key={i}>{this.getValue(h, v)}</td>
+                {this.props.fields.map((field, i) => (
+                  <td key={i}>{
+                    field.listFormatter(v[field.fieldName])
+                  }</td>
                 ))}
               </tr>
             ))}
@@ -41,16 +42,5 @@ export class List<T extends IHasId> extends Component<IProps<T>, any> {
   private linkToEdit = (id: number): any => {
     const route = this.props.editRoute(id);
     return () => this.props.history.push(route);
-  };
-
-  private getValue(h: keyof T, v: T): React.ReactNode {
-    return this.getFormatter(h)(v[h]);
-  }
-
-  private getFormatter(key: any): Formatter {
-    if (this.props.formatters[key]) {
-      return this.props.formatters[key];
-    }
-    return a => a;
   }
 }

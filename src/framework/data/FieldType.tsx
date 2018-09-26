@@ -1,8 +1,10 @@
 import * as faker from "faker";
 import React, { ChangeEvent } from "react";
-import { Class, Formatter, IFormatterMap } from "../../types";
+import { Link } from "react-router-dom";
+import { Class, Formatter } from "../../types";
 import { modules } from "../decorators";
 import { IModule } from "./Module";
+import { IHasId } from "./RestApi";
 
 export enum FieldType {
   num = "Number",
@@ -51,8 +53,8 @@ export abstract class Field<T> {
 
   public abstract render(props: IFieldProps): any;
 
-  public listFormatter(obj: IFormatterMap): IFormatterMap {
-    return obj;
+  public listFormatter = (value: any) => {
+    return <span>{value}</span>;
   }
 
   protected onChange(func: (val: any) => void) {
@@ -191,7 +193,7 @@ export class BoolField<T> extends Field<T> {
 }
 
 // tslint:disable-next-line:max-classes-per-file
-export class ManyToOne<T, V> extends Field<T> {
+export class ManyToOne<T, V extends IHasId> extends Field<T> {
   public type: FieldType = FieldType.entity;
   constructor(
     public fieldName: keyof T & string,
@@ -201,9 +203,14 @@ export class ManyToOne<T, V> extends Field<T> {
     super(fieldName);
   }
 
-  public listFormatter(obj: IFormatterMap): IFormatterMap {
-    obj[this.fieldName] = this.formatter;
-    return obj;
+  public listFormatter = (obj: V) => {
+    const m: IModule<any> | undefined = modules.find(
+      mm => mm.name === this.classRef.name
+    );
+    if (!m) {
+      return <span>{obj.toString()}</span>
+    }
+    return <Link to={m.editRoute(String(obj.id))} >{obj.toString()}</Link> 
   }
 
   public fake() {
@@ -238,9 +245,8 @@ export class OneToMany<T, V> extends Field<T> {
     super(fieldName);
   }
 
-  public listFormatter(obj: IFormatterMap): IFormatterMap {
-    obj[this.fieldName] = (arr: any[]) => String(arr.length);
-    return obj;
+  public listFormatter = (arr: V[]) =>  {
+    return <span>{arr.length}</span>
   }
 
   public fake() {
