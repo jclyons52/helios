@@ -1,5 +1,7 @@
 import { Class, Formatter, ModuleParams } from "../../types";
-import { Field, FieldType, ManyToOne, OneToMany } from "../data/FieldType";
+import { ManyToOne } from "../data/field/ManyToOne";
+import { OneToMany } from "../data/field/OneToMany";
+import { Field, FieldType } from "../data/FieldType";
 import { BaseModule, IModule } from "../data/Module";
 import { IHasId } from "../data/RestApi";
 
@@ -10,6 +12,8 @@ export const modules: Array<IModule<any>> = []
 export function field(fieldType?: FieldType) {
   return <T>(target: T, key: keyof T & string) => {
     const t = Reflect.getMetadata("design:type", target, key);
+    // tslint:disable-next-line:no-console
+    console.log(t, target, key)
     const name = target.constructor.prototype.constructor.name;
     if (!metadata[name]) {
       metadata[name] = [];

@@ -1,4 +1,3 @@
-import { Container } from "inversify";
 import { decorate, observable } from "mobx";
 import React from "react";
 import { RouteComponentProps } from "react-router";
@@ -20,8 +19,6 @@ export interface IModule<T extends IHasId> {
   factory: IFactory<T>;
   endpoints: Endpoint[];
   fields: Array<Field<T>>;
-  register(c: Container): void;
-  boot(c: Container): void;
   editRoute(id?: string): string
 }
 
@@ -51,14 +48,6 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
     this.endpoints = this.getEndpoints();
   }
 
-  public register(c: Container): void {
-    // tslint:disable-next-line:no-console
-    console.log(c);
-  }
-  public boot(c: Container): void {
-    // tslint:disable-next-line:no-console
-    console.log(c);
-  }
 
   public editRoute = (id: string = ":id") => `/${this.name.toLowerCase()}/edit/${id}`
 
