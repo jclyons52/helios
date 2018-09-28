@@ -1,4 +1,4 @@
-import { Class } from "../../types";
+import { Class } from "../types";
 import { Field } from "./FieldType";
 
 export interface IFactory<T> {

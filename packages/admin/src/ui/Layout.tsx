@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect, Route } from "react-router";
-import { Consumer } from "../../Context";
+import { Consumer } from "../Context";
 import { Endpoint } from "../Endpoint";
 import { Navbar } from "./Navbar";
 import { Sidebar } from "./Sidebar";

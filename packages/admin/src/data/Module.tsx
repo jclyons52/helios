@@ -1,7 +1,7 @@
 import { decorate, observable } from "mobx";
 import React from "react";
 import { RouteComponentProps } from "react-router";
-import { Class, ModuleParams } from "../../types";
+import { Class, ModuleParams } from "../types";
 import { metadata } from "../decorators";
 import { Endpoint } from "../Endpoint";
 import { Edit } from "../ui/Edit";

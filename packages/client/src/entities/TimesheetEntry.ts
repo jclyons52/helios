@@ -1,4 +1,4 @@
-import { field, Resource } from "../framework/decorators";
+import { field, Resource } from "@typewryter/admin";
 
 @Resource({ baseUrl: "/timesheetentries" })
 export class TimesheetEntry {

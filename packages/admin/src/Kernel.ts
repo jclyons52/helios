@@ -1,4 +1,3 @@
-import * as entities from "../entities"
 import { IModule } from "./data/Module";
 import { modules } from "./decorators"
 import { Endpoint } from "./Endpoint";
@@ -10,12 +9,8 @@ export class Kernel {
     public boot() {
     }
 
-    public get entities() {
-        return entities
-    }
-
     public get endpoints(): Endpoint[] {
-        return this.modules.reduce((carry, item) => { 
+        return this.modules.reduce((carry: Endpoint[], item) => { 
             return [...carry, ...item.endpoints]
          }, [])
     }

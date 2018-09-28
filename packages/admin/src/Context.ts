@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Kernel } from "./framework/Kernel";
+import { Kernel } from "./Kernel";
 
 const kernel = new Kernel()
 kernel.boot()

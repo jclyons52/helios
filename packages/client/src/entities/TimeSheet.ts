@@ -1,4 +1,4 @@
-import { field, manyToOne, oneToMany, Resource } from "../framework/decorators";
+import { field, manyToOne, oneToMany, Resource } from "@typewryter/admin";
 import { TimesheetEntry } from "./TimesheetEntry";
 import { User } from "./User";
 

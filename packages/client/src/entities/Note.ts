@@ -1,5 +1,4 @@
-import { FieldType } from "../framework/data/FieldType";
-import { field, Resource } from "../framework/decorators";
+import { field, FieldType, Resource } from "@typewryter/admin";
 
 @Resource({ baseUrl: "/notes" })
 export class Note {

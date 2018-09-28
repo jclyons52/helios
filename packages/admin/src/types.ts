@@ -1,5 +1,5 @@
-import { IModule } from "./framework/data/Module";
-import { IHasId } from "./framework/data/RestApi";
+import { IModule } from "./data/Module";
+import { IHasId } from "./data/RestApi";
 
 // tslint:disable-next-line:ban-types
 type Abstract<T> = Function & { prototype: T };

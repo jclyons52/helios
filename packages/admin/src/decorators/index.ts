@@ -1,11 +1,11 @@
-import { Class, Formatter, ModuleParams } from "../../types";
+import { Class, Formatter, ModuleParams } from "../types";
 import { ManyToOne } from "../data/field/ManyToOne";
 import { OneToMany } from "../data/field/OneToMany";
 import { Field, FieldType } from "../data/FieldType";
 import { BaseModule, IModule } from "../data/Module";
 import { IHasId } from "../data/RestApi";
 
-export const metadata = {};
+export const metadata: { [key: string]: any } = {};
 
 export const modules: Array<IModule<any>> = []
 
@@ -55,4 +55,3 @@ export function Resource<T extends IHasId>(config: ModuleParams<T>) {
     modules.push(m);
   }
 }
-

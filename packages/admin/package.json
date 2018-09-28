@@ -1,0 +1,34 @@
+{
+  "name": "@typewryter/admin",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc -w",
+    "document": "api-extractor run; api-documenter markdown --input-folder=\"./dist\" --output-folder=\"./docs\";"
+  },
+  "devDependencies": {
+    "@microsoft/api-documenter": "^1.5.29",
+    "@microsoft/api-extractor": "^5.13.0",
+    "@types/faker": "^4.1.4",
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.8",
+    "@types/react-router-dom": "^4.3.1",
+    "faker": "^4.1.0",
+    "mobx-react": "^5.2.8",
+    "ts-jest": "^23.10.2",
+    "ts-mockito": "^2.3.1",
+    "typescript": "^3.1.1"
+  },
+  "peerDependencies": {
+    "react": "^16.5.2",
+    "react-mobx": "^0.0.4",
+    "react-router": "^4.3.1"
+  },
+  "dependencies": {
+    "mobx": "^5.5.0",
+    "reflect-metadata": "^0.1.12"
+  }
+}

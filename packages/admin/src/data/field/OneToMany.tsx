@@ -1,5 +1,5 @@
 import React from "react";
-import { Class } from "../../../types";
+import { Class } from "../../types";
 import { modules } from "../../decorators";
 import { Field, FieldType, IFieldProps } from "../FieldType";
 import { IModule } from "../Module";
