@@ -1,0 +1,26 @@
+type Note {
+  id: number
+  title: string
+  body: string
+}
+
+type Timesheet {
+  id: number
+  user: User
+  entries: [TimesheetEntry]
+}
+
+type TimesheetEntry {
+  id: number
+  title: string
+  start: Date
+  end: Date
+  allDay: boolean
+  resource: any
+}
+
+type User {
+  id: number
+  username: string
+  email: string
+}

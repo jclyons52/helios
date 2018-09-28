@@ -3,7 +3,6 @@ import * as ReactDOM from "react-dom";
 import { HashRouter as Router } from "react-router-dom";
 import "reflect-metadata";
 import App from "./App";
-import "./index.css";
 import registerServiceWorker from "./registerServiceWorker";
 
 ReactDOM.render(
