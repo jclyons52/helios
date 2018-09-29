@@ -1,0 +1,373 @@
+{
+  "kind": "package",
+  "name": "@typewryter/admin",
+  "summary": [],
+  "remarks": [],
+  "exports": {
+    "Endpoint": {
+      "kind": "class",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "__constructor": {
+          "kind": "constructor",
+          "signature": "constructor(url: Url, label: string, component: ComponentType<RouteComponentProps<any>>, exact?: boolean, showInSidebar?: boolean);",
+          "parameters": {
+            "url": {
+              "name": "url",
+              "description": [],
+              "isOptional": false,
+              "isSpread": false,
+              "type": "Url"
+            },
+            "label": {
+              "name": "label",
+              "description": [],
+              "isOptional": false,
+              "isSpread": false,
+              "type": "string"
+            },
+            "component": {
+              "name": "component",
+              "description": [],
+              "isOptional": false,
+              "isSpread": false,
+              "type": "ComponentType<RouteComponentProps<any>>"
+            },
+            "exact": {
+              "name": "exact",
+              "description": [],
+              "isOptional": true,
+              "isSpread": false,
+              "type": "boolean"
+            },
+            "showInSidebar": {
+              "name": "showInSidebar",
+              "description": [],
+              "isOptional": true,
+              "isSpread": false,
+              "type": "boolean"
+            }
+          },
+          "deprecatedMessage": [],
+          "summary": [
+            {
+              "kind": "text",
+              "text": "Constructs a new instance of the "
+            },
+            {
+              "kind": "api-link",
+              "elements": [
+                {
+                  "kind": "text",
+                  "text": "Endpoint"
+                }
+              ],
+              "target": {
+                "scopeName": "@typewryter",
+                "packageName": "admin",
+                "exportName": "Endpoint",
+                "memberName": ""
+              }
+            },
+            {
+              "kind": "text",
+              "text": " class"
+            }
+          ],
+          "remarks": []
+        },
+        "component": {
+          "kind": "property",
+          "signature": "component: ComponentType<RouteComponentProps<any>>;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "ComponentType<RouteComponentProps<any>>",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "exact": {
+          "kind": "property",
+          "signature": "exact: boolean;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "boolean",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "label": {
+          "kind": "property",
+          "signature": "label: string;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "string",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "showInSidebar": {
+          "kind": "property",
+          "signature": "showInSidebar: boolean;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "boolean",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        },
+        "url": {
+          "kind": "property",
+          "signature": "url: Url;",
+          "isOptional": false,
+          "isReadOnly": false,
+          "isStatic": false,
+          "type": "Url",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "field": {
+      "kind": "function",
+      "signature": "export function field(fieldType?: FieldType): <T>(target: T, key: keyof T & string) => void;",
+      "returnValue": {
+        "type": "<T>(target: T, key: keyof T & string) => void",
+        "description": []
+      },
+      "parameters": {
+        "fieldType": {
+          "name": "fieldType",
+          "description": [],
+          "isOptional": true,
+          "isSpread": false,
+          "type": "FieldType"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "FieldType": {
+      "kind": "enum",
+      "values": {
+        "bool": {
+          "kind": "enum value",
+          "value": "\"Boolean\"",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "email": {
+          "kind": "enum value",
+          "value": "\"email\"",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "entity": {
+          "kind": "enum value",
+          "value": "\"Entity\"",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "num": {
+          "kind": "enum value",
+          "value": "\"Number\"",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "str": {
+          "kind": "enum value",
+          "value": "\"String\"",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "text": {
+          "kind": "enum value",
+          "value": "\"Text\"",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        },
+        "userName": {
+          "kind": "enum value",
+          "value": "\"username\"",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "Kernel": {
+      "kind": "class",
+      "extends": "",
+      "implements": "",
+      "typeParameters": [],
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false,
+      "isSealed": false,
+      "members": {
+        "boot": {
+          "kind": "method",
+          "signature": "boot(): void;",
+          "accessModifier": "",
+          "isOptional": false,
+          "isStatic": false,
+          "returnValue": {
+            "type": "void",
+            "description": []
+          },
+          "parameters": {},
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false
+        },
+        "endpoints": {
+          "kind": "property",
+          "signature": "readonly endpoints: Endpoint[];",
+          "isOptional": false,
+          "isReadOnly": true,
+          "isStatic": false,
+          "type": "Endpoint[]",
+          "deprecatedMessage": [],
+          "summary": [],
+          "remarks": [],
+          "isBeta": false,
+          "isSealed": false,
+          "isVirtual": false,
+          "isOverride": false,
+          "isEventProperty": false
+        }
+      }
+    },
+    "manyToOne": {
+      "kind": "function",
+      "signature": "export function manyToOne<V extends IHasId>(classRef: Class<V>, formatter?: Formatter): <T>(target: any, key: keyof T & string) => void;",
+      "returnValue": {
+        "type": "<T>(target: any, key: keyof T & string) => void",
+        "description": []
+      },
+      "parameters": {
+        "classRef": {
+          "name": "classRef",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "Class<V>"
+        },
+        "formatter": {
+          "name": "formatter",
+          "description": [],
+          "isOptional": true,
+          "isSpread": false,
+          "type": "Formatter"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "oneToMany": {
+      "kind": "function",
+      "signature": "export function oneToMany<V>(classRef: Class<V>): <T>(target: any, key: keyof T & string) => void;",
+      "returnValue": {
+        "type": "<T>(target: any, key: keyof T & string) => void",
+        "description": []
+      },
+      "parameters": {
+        "classRef": {
+          "name": "classRef",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "Class<V>"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    },
+    "Resource": {
+      "kind": "function",
+      "signature": "export function Resource<T extends IHasId>(config: ModuleParams<T>): (target: Class<T>) => void;",
+      "returnValue": {
+        "type": "(target: Class<T>) => void",
+        "description": []
+      },
+      "parameters": {
+        "config": {
+          "name": "config",
+          "description": [],
+          "isOptional": false,
+          "isSpread": false,
+          "type": "ModuleParams<T>"
+        }
+      },
+      "deprecatedMessage": [],
+      "summary": [],
+      "remarks": [],
+      "isBeta": false
+    }
+  }
+}
