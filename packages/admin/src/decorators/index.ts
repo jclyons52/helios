@@ -1,11 +1,12 @@
-import { Class, Formatter, ModuleParams, FieldType } from "../types";
+import { Class, Formatter, ModuleParams, FieldType, FieldMap } from "../types";
 import { ManyToOne } from "../data/field/ManyToOne";
 import { OneToMany } from "../data/field/OneToMany";
 import { BaseModule, IModule } from "../data/Module";
 import { IHasId } from "../data/RestApi";
 import { FieldFactory } from "../data/FieldFactory";
+import { Map } from "immutable";
 
-export const metadata: { [key: string]: any } = {};
+export const metadata: { [key: string]: FieldMap<any> } = {};
 
 export const modules: Array<IModule<any>> = []
 
@@ -16,9 +17,9 @@ export function field(fieldType?: FieldType) {
     console.log(t, target, key)
     const name = target.constructor.prototype.constructor.name;
     if (!metadata[name]) {
-      metadata[name] = [];
+      metadata[name] = Map();
     }
-    metadata[name].push(FieldFactory.create<T>(key, fieldType || t.name))
+    metadata[name] =  metadata[name].set(key, FieldFactory.create<T>(key, fieldType || t.name))
   };
 }
 
@@ -29,9 +30,9 @@ export function manyToOne<V extends IHasId>(classRef: Class<V>, formatter: Forma
     console.log(t)
     const name = target.constructor.prototype.constructor.name;
     if (!metadata[name]) {
-      metadata[name] = [];
+      metadata[name] =  Map();
     }
-    metadata[name].push(new ManyToOne<T, V>(key, classRef, formatter))
+    metadata[name] =  metadata[name].set(key,new ManyToOne<T, V>(key, classRef, formatter))
   };
 }
 
@@ -43,9 +44,9 @@ export function oneToMany<V>(classRef: Class<V>) {
     console.log(t)
     const name = target.constructor.prototype.constructor.name;
     if (!metadata[name]) {
-      metadata[name] = [];
+      metadata[name] =  Map();
     }
-    metadata[name].push(new OneToMany<T, V>(key, classRef))
+    metadata[name] =  metadata[name].set(key,new OneToMany<T, V>(key, classRef))
   };
 }
 

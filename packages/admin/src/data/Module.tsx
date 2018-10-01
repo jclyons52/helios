@@ -35,6 +35,7 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
   constructor(classRef: Class<T>, c: ModuleParams<T>) {
     this.baseUrl = c.baseUrl;
     this.name = c.name || classRef.name;
+    // @ts-ignore
     this.fields = c.fields || metadata[this.name];
     this.makeObservable(classRef)
     this.factory = c.factory || new BaseFactory<T>(classRef, this.fields);

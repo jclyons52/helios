@@ -6,7 +6,8 @@ export class Kernel {
     private modules: Array<IModule<any>> = modules
 
     // tslint:disable-next-line:no-empty
-    public boot() {
+    public boot(...args: any[]) {
+        console.log(args)
     }
 
     public get endpoints(): Endpoint[] {
