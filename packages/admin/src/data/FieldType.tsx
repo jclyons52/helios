@@ -1,51 +1,15 @@
 import * as faker from "faker";
 import React, { ChangeEvent } from "react";
-import { BoolField } from "./field/BoolField";
-import { NumberField } from "./field/NumberField";
-import { StringField } from "./field/StringField";
-import { TextField } from "./field/TextField";
 
-export enum FieldType {
-  num = "Number",
-  str = "String",
-  text = "Text",
-  bool = "Boolean",
-  userName = "username",
-  email = "email",
-  entity = "Entity"
-}
-
-  /**
-   * 
-   * @todo fix any type
-   */
+/**
+ * @todo fix any type
+ */
 export interface IFieldProps {
-  value: any
-  onChange: (value: any) => void
+  value: any;
+  onChange: (value: any) => void;
 }
 
 export abstract class Field<T> {
-  public static create<T>(
-    fieldName: keyof T & string,
-    type: FieldType
-  ): Field<T> {
-    switch (type) {
-      case FieldType.str:
-        return new StringField<T>(fieldName);
-      case FieldType.text:
-        return new TextField<T>(fieldName);
-      case FieldType.userName:
-        return new UsernameField<T>(fieldName);
-      case FieldType.email:
-        return new EmailField<T>(fieldName);
-      case FieldType.num:
-        return new NumberField<T>(fieldName);
-      case FieldType.bool:
-        return new BoolField<T>(fieldName);
-      default:
-        return new StringField<T>(fieldName);
-    }
-  }
   constructor(public fieldName: keyof T & string) {}
 
   public abstract fake(): any;
@@ -54,12 +18,12 @@ export abstract class Field<T> {
 
   public listFormatter = (value: any) => {
     return <span>{value}</span>;
-  }
+  };
 
   protected onChange(func: (val: any) => void) {
     return (event: ChangeEvent<HTMLInputElement>) => {
-      func(event.currentTarget.value)
-    }
+      func(event.currentTarget.value);
+    };
   }
 }
 
@@ -104,4 +68,3 @@ export class EmailField<T> extends Field<T> {
     );
   }
 }
-

@@ -1,7 +1,7 @@
 import { decorate, observable } from "mobx";
 import React from "react";
 import { RouteComponentProps } from "react-router";
-import { Class, ModuleParams } from "../types";
+import { Class, ModuleParams, FieldMap } from "../types";
 import { metadata } from "../decorators";
 import { Endpoint } from "../Endpoint";
 import { Edit } from "../ui/Edit";
@@ -11,6 +11,7 @@ import { BaseFactory, IFactory } from "./Factory";
 import { Field } from "./FieldType";
 import { FakeRestApi, IHasId, IRestApi } from "./RestApi";
 
+
 export interface IModule<T extends IHasId> {
   name: string;
   baseUrl: string;
@@ -18,7 +19,7 @@ export interface IModule<T extends IHasId> {
   api: IRestApi<T>;
   factory: IFactory<T>;
   endpoints: Endpoint[];
-  fields: Array<Field<T>>;
+  fields: FieldMap<T>;
   editRoute(id?: string): string
 }
 
@@ -30,7 +31,7 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
   public store: BaseStore<T>;
   public factory: IFactory<T>;
   public endpoints: Endpoint[] = [];
-  public fields: Array<Field<T>>;
+  public fields: FieldMap<T>;
   constructor(classRef: Class<T>, c: ModuleParams<T>) {
     this.baseUrl = c.baseUrl;
     this.name = c.name || classRef.name;

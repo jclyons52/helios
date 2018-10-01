@@ -1,17 +1,17 @@
 import { observer } from "mobx-react";
 import React, { Component } from "react";
 import { BaseStore } from "../data/baseStore";
-import { Field } from "../data/FieldType";
 import { IHasId } from "../data/RestApi";
+import { FieldMap } from "../types";
 
-interface IProps<T extends IHasId> {
+export interface IEditProps<T extends IHasId> {
   entity: T;
   store: BaseStore<T>
-  fields: Array<Field<T>>;
+  fields: FieldMap<T>;
 }
 
 @observer
-export class Edit<T extends IHasId> extends Component<IProps<T>, any> {
+export class Edit<T extends IHasId> extends Component<IEditProps<T>, any> {
   public render() {
     this.getFields();
     return (
@@ -24,7 +24,7 @@ export class Edit<T extends IHasId> extends Component<IProps<T>, any> {
   }
 
   private getFields() {
-    return this.props.fields.map(field => {
+    return this.props.fields.toArray().map(field => {
       const fieldName: keyof T & string = field.fieldName
       return field.render({ 
         onChange: this.props.store.onChange(this.props.entity, fieldName),

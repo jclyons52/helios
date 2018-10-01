@@ -1,9 +1,9 @@
-import { Class, Formatter, ModuleParams } from "../types";
+import { Class, Formatter, ModuleParams, FieldType } from "../types";
 import { ManyToOne } from "../data/field/ManyToOne";
 import { OneToMany } from "../data/field/OneToMany";
-import { Field, FieldType } from "../data/FieldType";
 import { BaseModule, IModule } from "../data/Module";
 import { IHasId } from "../data/RestApi";
+import { FieldFactory } from "../data/FieldFactory";
 
 export const metadata: { [key: string]: any } = {};
 
@@ -18,7 +18,7 @@ export function field(fieldType?: FieldType) {
     if (!metadata[name]) {
       metadata[name] = [];
     }
-    metadata[name].push(Field.create<T>(key, fieldType || t.name))
+    metadata[name].push(FieldFactory.create<T>(key, fieldType || t.name))
   };
 }
 

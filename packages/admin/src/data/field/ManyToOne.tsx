@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Class, Formatter } from "../../types";
+import { Class, Formatter, FieldType } from "../../types";
 import { modules } from "../../decorators";
-import { Field, FieldType, IFieldProps } from "../FieldType";
+import { Field, IFieldProps } from "../FieldType";
 import { IModule } from "../Module";
 import { IHasId } from "../RestApi";
 

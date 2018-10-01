@@ -1,11 +1,11 @@
 import * as H from "history"
 import { observer } from "mobx-react";
 import React, { Component } from "react";
-import { Field } from "../data/FieldType";
 import { IHasId } from "../data/RestApi";
+import { FieldMap } from "../types";
 
 interface IProps<T extends { id: number; [key: string]: any }> {
-  fields: Array<Field<T>>;
+  fields: FieldMap<T>;
   values: T[];
   editRoute: (id: number) => string;
   history: H.History
@@ -16,10 +16,10 @@ export class List<T extends IHasId> extends Component<IProps<T>, any> {
   public render() {
     return (
       <div className="table-responsive">
-        <table className="table table-striped table-sm">
+        <table className="table table-striped table-hover table-sm">
           <thead>
             <tr>
-              {this.props.fields.map((field, i) => (
+              {this.props.fields.toArray().map((field, i) => (
                 <th key={i}>{field.fieldName}</th>
               ))}
             </tr>
@@ -27,7 +27,7 @@ export class List<T extends IHasId> extends Component<IProps<T>, any> {
           <tbody>
             {this.props.values.map(v => (
               <tr onClick={this.linkToEdit(v.id)}>
-                {this.props.fields.map((field, i) => (
+                {this.props.fields.toArray().map((field, i) => (
                   <td key={i}>{
                     field.listFormatter(v[field.fieldName])
                   }</td>

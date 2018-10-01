@@ -2,14 +2,14 @@ import { observer } from "mobx-react";
 import React, { Component } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { BaseStore } from "../data/baseStore";
-import { Field } from "../data/FieldType";
 import { IHasId } from "../data/RestApi";
 import { List } from "./List";
+import { FieldMap } from "../types";
 
 
 interface IProps<T extends IHasId> extends RouteComponentProps {
   store: BaseStore<T>
-  fields: Array<Field<T>>;
+  fields: FieldMap<T>;
   name: string
 }
 

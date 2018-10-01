@@ -13,6 +13,7 @@
     "@microsoft/api-documenter": "^1.5.29",
     "@microsoft/api-extractor": "^5.13.0",
     "@types/faker": "^4.1.4",
+    "@types/immutable": "^3.8.7",
     "@types/react": "^16.4.14",
     "@types/react-dom": "^16.0.8",
     "@types/react-router-dom": "^4.3.1",
@@ -28,6 +29,7 @@
     "react-router": "^4.3.1"
   },
   "dependencies": {
+    "immutable": "^3.8.2",
     "mobx": "^5.5.0",
     "reflect-metadata": "^0.1.12"
   }

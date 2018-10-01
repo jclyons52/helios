@@ -6,5 +6,6 @@ export { Endpoint } from "./Endpoint"
 export { Layout } from "./ui/Layout"
 
 export { field, manyToOne, oneToMany, Resource } from "./decorators"
-export { FieldType } from "./data/FieldType"
+export { FieldType } from "./types"
 
+export { Class } from "./types"

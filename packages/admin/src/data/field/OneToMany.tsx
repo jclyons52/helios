@@ -1,7 +1,7 @@
 import React from "react";
-import { Class } from "../../types";
+import { Class, FieldType } from "../../types";
 import { modules } from "../../decorators";
-import { Field, FieldType, IFieldProps } from "../FieldType";
+import { Field, IFieldProps } from "../FieldType";
 import { IModule } from "../Module";
 
 export class OneToMany<T, V> extends Field<T> {
