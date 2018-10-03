@@ -106,7 +106,7 @@ export class BaseModule<T extends IHasId> implements IModule<T> {
 
   private makeObservable = (ref: Class<T>) => {
     // @ts-ignore
-    const obj = this.fields.reduce((carry, item) => {
+    const obj = this.fields.toArray().reduce((carry, item) => {
     // @ts-ignore
       carry[item.fieldName] = observable
       return carry

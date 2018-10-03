@@ -37,7 +37,7 @@ export function manyToOne<V extends IHasId>(classRef: Class<V>, formatter: Forma
 }
 
 
-export function oneToMany<V>(classRef: Class<V>) {
+export function oneToMany<V extends IHasId>(classRef: Class<V>) {
   return <T>(target: any, key: keyof T & string) => {
     const t = Reflect.getMetadata("design:type", target, key);
     // tslint:disable-next-line:no-console

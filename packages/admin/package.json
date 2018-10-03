@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc",
     "start": "tsc -w",
-    "document": "api-extractor run; api-documenter markdown --input-folder=\"./dist\" --output-folder=\"./docs\";"
+    "document": "api-extractor run; api-documenter markdown --input-folder=\"./dist\" --output-folder=\"./docs\";",
+    "typedoc": "typedoc --out doc/ src/"
   },
   "devDependencies": {
     "@microsoft/api-documenter": "^1.5.29",
@@ -21,6 +22,7 @@
     "mobx-react": "^5.2.8",
     "ts-jest": "^23.10.2",
     "ts-mockito": "^2.3.1",
+    "typedoc": "^0.12.0",
     "typescript": "^3.1.1"
   },
   "peerDependencies": {
