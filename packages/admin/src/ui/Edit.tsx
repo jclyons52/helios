@@ -24,12 +24,6 @@ export class Edit<T extends IHasId> extends Component<IEditProps<T>, any> {
   }
 
   private getFields() {
-    return this.props.fields.toArray().map(field => {
-      const fieldName: keyof T & string = field.fieldName
-      return field.render({ 
-        onChange: this.props.store.onChange(this.props.entity, fieldName),
-        value: this.props.entity[fieldName],
-      })
-    });
+    return this.props.fields.renderFields(this.props.entity, this.props.store.onChange)
   }
 }

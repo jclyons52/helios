@@ -16,7 +16,7 @@ export class List<T extends IHasId> extends Component<IProps<T>, any> {
   public render() {
     return (
       <div className="table-responsive">
-        <table className="table table-striped table-hover table-sm">
+        <table className="table table-hover table-sm">
           <thead>
             <tr>
               {this.props.fields.toArray().map((field, i) => (

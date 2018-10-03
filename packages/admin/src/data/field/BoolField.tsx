@@ -13,9 +13,9 @@ export class BoolField<T> extends Field<T> {
             type="checkbox"
             className="form-check-input"
             checked={props.value}
-            id={this.fieldName}
+            id={this.getStringFieldName()}
           />
-          <label className="form-check-label" htmlFor={this.fieldName}>
+          <label className="form-check-label" htmlFor={this.getStringFieldName()}>
             {this.fieldName}
           </label>
         </div>

@@ -6,7 +6,7 @@ import { IModule } from "../Module";
 
 export class OneToMany<T, V> extends Field<T> {
     public type: FieldType = FieldType.entity;
-    constructor(public fieldName: keyof T & string, public classRef: Class<V>) {
+    constructor(public fieldName: keyof T, public fieldValue: T[keyof T], public classRef: Class<V>) {
       super(fieldName);
     }
   
@@ -23,7 +23,16 @@ export class OneToMany<T, V> extends Field<T> {
       }
       return null;
     }
+
     public render(props: IFieldProps) {
-      throw new Error("Method not implemented.");
+      const m: IModule<any> | undefined = modules.find(
+        mm => mm.name === this.classRef.name
+      );
+      if (!m) {
+        return (<span>module not found</span>)
+      }
+      return (
+        <form className="form-inline" >{m.fields.renderFields(this.fieldValue, m.store.onChange)}</form>
+      )
     }
   }

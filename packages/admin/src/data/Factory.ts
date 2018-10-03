@@ -1,6 +1,6 @@
 import { Class } from "../types";
-import { Field } from "./FieldType";
 import { FieldMap } from "../types";
+import { IHasId } from "./RestApi";
 
 export interface IFactory<T> {
   create(entity: Partial<T>): T;
@@ -18,7 +18,7 @@ export abstract class Factory<T> implements IFactory<T> {
 }
 
 // tslint:disable-next-line:max-classes-per-file
-export class BaseFactory<T extends {}> extends Factory<T> {
+export class BaseFactory<T extends IHasId> extends Factory<T> {
   constructor(private classRef: Class<T>, private fields: FieldMap<T>) {
     super();
   }

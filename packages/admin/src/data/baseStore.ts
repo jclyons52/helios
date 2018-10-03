@@ -16,7 +16,7 @@ export class BaseStore<T extends IHasId> {
     }
 
     @action
-    public onChange = <K extends keyof T & string>(entity: T, field: K ) => (value: T[K]) => {
+    public onChange = <K extends keyof T>(entity: T, field: K ) => (value: T[K]) => {
         entity[field] = value
     }
 }

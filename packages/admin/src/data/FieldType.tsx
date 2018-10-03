@@ -10,8 +10,11 @@ export interface IFieldProps {
 }
 
 export abstract class Field<T> {
-  constructor(public fieldName: keyof T & string) {}
+  constructor(public fieldName: keyof T) {}
 
+  public getStringFieldName() {
+    return String(this.fieldName)
+  }
   public abstract fake(): any;
 
   public abstract render(props: IFieldProps): any;
@@ -35,12 +38,12 @@ export class UsernameField<T> extends Field<T> {
   public render(props: IFieldProps) {
     return (
       <div className="form-group">
-        <label htmlFor={this.fieldName}>{this.fieldName}</label>
+        <label htmlFor={this.getStringFieldName()}>{this.fieldName}</label>
         <input
           type="text"
           value={props.value}
           onChange={this.onChange(props.onChange)}
-          id={this.fieldName}
+          id={this.getStringFieldName()}
           className="form-control"
         />
       </div>
@@ -56,12 +59,12 @@ export class EmailField<T> extends Field<T> {
   public render(props: IFieldProps) {
     return (
       <div className="form-group">
-        <label htmlFor={this.fieldName}>{this.fieldName}</label>
+        <label htmlFor={this.getStringFieldName()}>{this.fieldName}</label>
         <input
           type="text"
           value={props.value}
           onChange={this.onChange(props.onChange)}
-          id={this.fieldName}
+          id={this.getStringFieldName()}
           className="form-control"
         />
       </div>
