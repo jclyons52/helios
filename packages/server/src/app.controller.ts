@@ -1,12 +1,7 @@
-import { Get, Controller } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller } from '@nestjs/common';
+import { RestController } from 'RestController';
+import { Note } from 'Note.entity';
 
-@Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
-
-  @Get()
-  root(): string {
-    return this.appService.root();
-  }
-}
+// @ApiUseTags('notes')
+@Controller('notes')
+export class AppController extends RestController<Note> {}
