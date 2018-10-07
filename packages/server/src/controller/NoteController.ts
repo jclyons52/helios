@@ -1,7 +1,7 @@
 import {Note} from "../entity/Note";
 import { RestController } from "./RestController";
 
-export class UserController extends RestController<Note> {
+export class NoteController extends RestController<Note> {
     constructor() {
         super(Note)
     }

@@ -1,8 +1,13 @@
-import {UserController} from "./controller/UserController";
+import { UserController } from "./controller/UserController";
+import { NoteController } from "./controller/NoteController";
 import { RestController } from "./controller/RestController";
 import { Class } from "./types";
 
-export const Routes = [...getRestRoutes("users", UserController)];
+export const Routes = [
+    ...getRestRoutes("users", UserController),
+    ...getRestRoutes("notes", NoteController)
+
+];
 
 function getRestRoutes<T>(prefix: string, controller: Class<RestController<T>>) {
     return [{
